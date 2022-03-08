@@ -26,11 +26,18 @@ def ask_a_participium():
         answer = input(f'Dat is \"{english_word}\" in het Engels. Wat is zijn participium?\n')
 
     if answer == correct_answer:
-        print(':) Dat klopt!')
+        print(':) Dat klopt!\n')
+        return 1
     else:
-        print(f':( Helaas, is dat niet het juiste antwoord. Het is {correct_answer}')
+        print(f':( Helaas, is dat niet het juiste antwoord. Het is {correct_answer}\n')
+        return 0
 
+
+n_points = 0
+n_questions = 0
 
 while True:
+    n_questions += 1
     word_list = generate_word_list(appendix_1[2])
-    ask_a_participium()
+    n_points += ask_a_participium()
+    print(f' SCORE: {n_points}/{n_questions} = {round(n_points/n_questions*100)} %')
